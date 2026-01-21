@@ -1,0 +1,78 @@
+{
+  "agent_name": "Data Extraction Agent",
+  "agent_id": "6970c7631d92f5e2dd22a517",
+  "agent_purpose": "parser",
+  "description": "Extracts and structures financial data from VDR files including Trial Balances, sales data, payroll registers, and inventory aging reports",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "files_processed": "number",
+      "extracted_data": {
+        "trial_balances": [
+          "any"
+        ],
+        "sales_data": [
+          "any"
+        ],
+        "payroll_registers": [
+          "any"
+        ],
+        "inventory_aging": [
+          "any"
+        ]
+      },
+      "conversion_status": "string",
+      "warnings": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "error",
+    "result": {
+      "files_processed": 0,
+      "extracted_data": {
+        "trial_balances": [],
+        "sales_data": [],
+        "payroll_registers": [],
+        "inventory_aging": []
+      },
+      "conversion_status": "incomplete",
+      "warnings": [
+        "No PDF file uploaded. Please provide the Trial Balance PDF to proceed with data extraction and structuring."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Data Extraction Agent",
+      "timestamp": "2024-06-20T16:23:14Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:40:10.673678",
+  "test_message_used": "Parse this sample text for testing",
+  "actual_test_response": {
+    "status": "error",
+    "result": {
+      "files_processed": 0,
+      "extracted_data": {
+        "trial_balances": [],
+        "sales_data": [],
+        "payroll_registers": [],
+        "inventory_aging": []
+      },
+      "conversion_status": "incomplete",
+      "warnings": [
+        "No PDF file uploaded. Please provide the Trial Balance PDF to proceed with data extraction and structuring."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Data Extraction Agent",
+      "timestamp": "2024-06-20T16:23:14Z"
+    }
+  },
+  "test_passed": true
+}

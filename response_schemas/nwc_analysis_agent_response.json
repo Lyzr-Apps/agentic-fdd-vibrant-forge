@@ -1,0 +1,215 @@
+{
+  "agent_name": "NWC Analysis Agent",
+  "agent_id": "6970c7b51d92f5e2dd22a537",
+  "agent_purpose": "analyzer",
+  "description": "Calculates NWC peg, detects manipulation patterns, recommends target adjustments for SPA negotiations",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "nwc_calculation": {
+        "current_assets": "number",
+        "current_liabilities": "number",
+        "cash_excluded": "number",
+        "debt_excluded": "number",
+        "net_working_capital": "number",
+        "nwc_as_percent_revenue": "number"
+      },
+      "trend_analysis": {
+        "periods": [
+          "string"
+        ],
+        "nwc_values": [
+          "null"
+        ],
+        "trend_direction": "string"
+      },
+      "anomalies_detected": [
+        {
+          "type": "string",
+          "description": "string",
+          "impact_amount": "number",
+          "severity": "string",
+          "evidence": "string"
+        }
+      ],
+      "cash_conversion_cycle": {
+        "days_sales_outstanding": "null",
+        "days_inventory_outstanding": "null",
+        "days_payables_outstanding": "null",
+        "cash_conversion_days": "null"
+      },
+      "recommended_nwc_target": {
+        "proposed_target": "number",
+        "adjustment_rationale": "string",
+        "normalization_adjustments": [
+          {
+            "description": "string",
+            "amount": "number"
+          }
+        ]
+      },
+      "red_flags": [
+        "string"
+      ],
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "nwc_calculation": {
+        "current_assets": 2100000.0,
+        "current_liabilities": 1500000.0,
+        "cash_excluded": 0.0,
+        "debt_excluded": 0.0,
+        "net_working_capital": 600000.0,
+        "nwc_as_percent_revenue": 0.0
+      },
+      "trend_analysis": {
+        "periods": [
+          "2023-Q1",
+          "2023-Q2",
+          "2023-Q3",
+          "2023-Q4"
+        ],
+        "nwc_values": [
+          null,
+          null,
+          null,
+          600000.0
+        ],
+        "trend_direction": "increasing"
+      },
+      "anomalies_detected": [
+        {
+          "type": "ar_aging",
+          "description": "Accounts receivable balance increased significantly by 45% in Q4, suggesting potential collection issues or revenue recognition concerns.",
+          "impact_amount": 0.0,
+          "severity": "High",
+          "evidence": "AR increase far outpaces typical revenue or business growth; may suggest sales channel stuffing or slower collections."
+        },
+        {
+          "type": "inventory_manipulation",
+          "description": "Inventory turnover declined from 8x to 5x, indicating inventory accumulation, potential obsolescence, or channel stuffing pre-close.",
+          "impact_amount": 0.0,
+          "severity": "Medium",
+          "evidence": "Unusually slower inventory turnover may artificially inflate inventory balances and NWC."
+        }
+      ],
+      "cash_conversion_cycle": {
+        "days_sales_outstanding": null,
+        "days_inventory_outstanding": null,
+        "days_payables_outstanding": null,
+        "cash_conversion_days": null
+      },
+      "recommended_nwc_target": {
+        "proposed_target": 600000.0,
+        "adjustment_rationale": "Proposed NWC is based on current reported levels; however, AR spike and declining inventory turnover point to inflated balances. Recommend downward normalization adjustment to account for unsustainable AR and inventory levels.",
+        "normalization_adjustments": [
+          {
+            "description": "AR and Inventory inflated pre-close; adjust to trailing 3-quarter averages or normalized turnover metrics.",
+            "amount": -100000.0
+          }
+        ]
+      },
+      "red_flags": [
+        "Unusual 45% AR increase in Q4.",
+        "Significant slowdown in inventory turnover pre-sale."
+      ],
+      "recommendations": [
+        "Scrutinize AR aging and test collectibility to adjust for potentially overstated receivables.",
+        "Normalize inventory to historical turnover rates and evaluate for excess/obsolete stock.",
+        "Negotiate downward adjustment to NWC peg in SPA to remove inflated balances.",
+        "Request detailed reconciliation of AR and inventory movements in Q4."
+      ]
+    },
+    "metadata": {
+      "agent_name": "NWC Analysis Agent",
+      "timestamp": "2024-06-12T14:32:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:40:37.595685",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "nwc_calculation": {
+        "current_assets": 2100000.0,
+        "current_liabilities": 1500000.0,
+        "cash_excluded": 0.0,
+        "debt_excluded": 0.0,
+        "net_working_capital": 600000.0,
+        "nwc_as_percent_revenue": 0.0
+      },
+      "trend_analysis": {
+        "periods": [
+          "2023-Q1",
+          "2023-Q2",
+          "2023-Q3",
+          "2023-Q4"
+        ],
+        "nwc_values": [
+          null,
+          null,
+          null,
+          600000.0
+        ],
+        "trend_direction": "increasing"
+      },
+      "anomalies_detected": [
+        {
+          "type": "ar_aging",
+          "description": "Accounts receivable balance increased significantly by 45% in Q4, suggesting potential collection issues or revenue recognition concerns.",
+          "impact_amount": 0.0,
+          "severity": "High",
+          "evidence": "AR increase far outpaces typical revenue or business growth; may suggest sales channel stuffing or slower collections."
+        },
+        {
+          "type": "inventory_manipulation",
+          "description": "Inventory turnover declined from 8x to 5x, indicating inventory accumulation, potential obsolescence, or channel stuffing pre-close.",
+          "impact_amount": 0.0,
+          "severity": "Medium",
+          "evidence": "Unusually slower inventory turnover may artificially inflate inventory balances and NWC."
+        }
+      ],
+      "cash_conversion_cycle": {
+        "days_sales_outstanding": null,
+        "days_inventory_outstanding": null,
+        "days_payables_outstanding": null,
+        "cash_conversion_days": null
+      },
+      "recommended_nwc_target": {
+        "proposed_target": 600000.0,
+        "adjustment_rationale": "Proposed NWC is based on current reported levels; however, AR spike and declining inventory turnover point to inflated balances. Recommend downward normalization adjustment to account for unsustainable AR and inventory levels.",
+        "normalization_adjustments": [
+          {
+            "description": "AR and Inventory inflated pre-close; adjust to trailing 3-quarter averages or normalized turnover metrics.",
+            "amount": -100000.0
+          }
+        ]
+      },
+      "red_flags": [
+        "Unusual 45% AR increase in Q4.",
+        "Significant slowdown in inventory turnover pre-sale."
+      ],
+      "recommendations": [
+        "Scrutinize AR aging and test collectibility to adjust for potentially overstated receivables.",
+        "Normalize inventory to historical turnover rates and evaluate for excess/obsolete stock.",
+        "Negotiate downward adjustment to NWC peg in SPA to remove inflated balances.",
+        "Request detailed reconciliation of AR and inventory movements in Q4."
+      ]
+    },
+    "metadata": {
+      "agent_name": "NWC Analysis Agent",
+      "timestamp": "2024-06-12T14:32:00Z"
+    }
+  },
+  "test_passed": true
+}

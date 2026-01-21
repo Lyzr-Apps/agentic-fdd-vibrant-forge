@@ -1,0 +1,387 @@
+{
+  "agent_name": "Interview Prep Agent",
+  "agent_id": "6970c7fad6d0dcaec1117eaf",
+  "agent_purpose": "recommendation",
+  "description": "Generates targeted management interview questions based on anomalies with validation frameworks",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "interview_prep_summary": {
+        "total_questions_generated": "number",
+        "focus_areas": [
+          "string"
+        ],
+        "priority_topics": [
+          "string"
+        ]
+      },
+      "question_sets": [
+        {
+          "category": "string",
+          "related_anomaly": "string",
+          "severity": "string",
+          "questions": [
+            {
+              "question": "string",
+              "rationale": "string",
+              "validation_framework": "string",
+              "data_requests": [
+                "string"
+              ],
+              "follow_up_questions": [
+                "string"
+              ]
+            }
+          ]
+        }
+      ],
+      "validation_checklist": [
+        {
+          "claim_to_verify": "string",
+          "required_documentation": [
+            "string"
+          ],
+          "acceptance_criteria": "string"
+        }
+      ],
+      "recommended_attendees": [
+        "string"
+      ],
+      "interview_duration_estimate": "string"
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "interview_prep_summary": {
+        "total_questions_generated": 7,
+        "focus_areas": [
+          "reconciliation",
+          "qoe",
+          "nwc",
+          "operations"
+        ],
+        "priority_topics": [
+          "Q4 Accounts Receivable spike (45%)",
+          "Significant extension of payables period",
+          "Inventory turnover deterioration"
+        ]
+      },
+      "question_sets": [
+        {
+          "category": "Quality of Earnings",
+          "related_anomaly": "45% AR spike in Q4",
+          "severity": "Critical",
+          "questions": [
+            {
+              "question": "Can you explain the primary drivers behind the 45% spike in accounts receivable during Q4?",
+              "rationale": "Sudden spikes in AR could indicate aggressive revenue recognition, sales channel issues, or collection challenges.",
+              "validation_framework": "Review customer aging by cohort, compare Q4 contract terms to prior quarters, identify large or one-off receivables.",
+              "data_requests": [
+                "Q4 AR aging report by customer",
+                "List of top 10 outstanding AR accounts for Q4 and previous quarters",
+                "Copies of major contracts/invoices issued in Q4"
+              ],
+              "follow_up_questions": [
+                "Were any payment terms altered for key customers during Q4?",
+                "Did you recognize any revenue early or shift cut-off policies?",
+                "Are any of these receivables disputed or at risk of non-collection?"
+              ]
+            },
+            {
+              "question": "Were there changes in credit policies or sales push initiatives in Q4?",
+              "rationale": "Changes in policies or incentives can drive up receivables temporarily but with risk for collections.",
+              "validation_framework": "Compare Q4 sales incentives, policies to prior periods, and review internal communications on policy/accounting treatment.",
+              "data_requests": [
+                "Credit policy documentation Q3 vs Q4",
+                "Sales target or incentive communications for Q4"
+              ],
+              "follow_up_questions": [
+                "Did sales or finance teams flag any concerns regarding customer quality or payment timing?",
+                "Were any new or high-risk customers added in Q4?"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Working Capital",
+          "related_anomaly": "Payables stretched from 30 to 60 days",
+          "severity": "High",
+          "questions": [
+            {
+              "question": "What led to the extension of supplier payment terms from 30 to 60 days?",
+              "rationale": "Doubling payables period potentially signals cash flow stress or supplier negotiation changes.",
+              "validation_framework": "Corroborate explanations with supplier correspondence and changes in contract terms.",
+              "data_requests": [
+                "Vendor agreements with revised payment terms",
+                "AP aging schedules for current and previous periods",
+                "Correspondence with top 5 suppliers regarding terms changes"
+              ],
+              "follow_up_questions": [
+                "Were any suppliers resistant to term extensions?",
+                "Has this change impacted supply availability, pricing, or relationships?"
+              ]
+            },
+            {
+              "question": "Is there any correlation between the payables extension and the Q4 AR spike?",
+              "rationale": "Linked working capital movements could indicate larger liquidity or revenue recognition issues.",
+              "validation_framework": "Compare cash position, payables and AR movements by month; correlate with management reports.",
+              "data_requests": [
+                "Monthly cash flow statements Q3\u2013Q4",
+                "Management meeting minutes regarding liquidity management in Q3\u2013Q4"
+              ],
+              "follow_up_questions": [
+                "Were there discussions about optimizing working capital ahead of year-end?",
+                "Did any lenders impose new covenants or constraints?"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Operations",
+          "related_anomaly": "Inventory turnover decline",
+          "severity": "High",
+          "questions": [
+            {
+              "question": "What operational factors contributed to the decline in inventory turnover this period?",
+              "rationale": "Reduced turnover can reflect slowing sales, forecasting errors, or buildup of obsolete inventory.",
+              "validation_framework": "Analyze aging inventory reports, compare inventory composition and turnover rates to historical trends.",
+              "data_requests": [
+                "Inventory aging report",
+                "Inventory write-off/write-down records",
+                "Sales and production forecasts vs actuals for the period"
+              ],
+              "follow_up_questions": [
+                "Has there been an increase in excess or obsolete stock?",
+                "Did the company change procurement, stocking, or forecasting practices recently?"
+              ]
+            },
+            {
+              "question": "What measures has management taken to address slower inventory turnover?",
+              "rationale": "Management response indicates whether issue is ongoing or actively being managed.",
+              "validation_framework": "Review inventory management plans, discount/sell-through programs, operational KPIs.",
+              "data_requests": [
+                "Management presentations on inventory action plans",
+                "SKU-level inventory movements for current and previous years"
+              ],
+              "follow_up_questions": [
+                "What is the expected timeline for normalization?",
+                "Are there categories of inventory at particular risk?"
+              ]
+            }
+          ]
+        }
+      ],
+      "validation_checklist": [
+        {
+          "claim_to_verify": "The 45% AR increase in Q4 is attributed to normal seasonal sales, not collection risks.",
+          "required_documentation": [
+            "AR aging reports Q3 vs Q4 with customer detail",
+            "Sales contracts and invoicing history for Q4",
+            "Evidence of seasonal sales patterns (historical sales overrides)"
+          ],
+          "acceptance_criteria": "Documented seasonal pattern in prior years, no material increase in overdue or disputed AR, no major changes to customer credit risk profile."
+        },
+        {
+          "claim_to_verify": "Extension of payables was negotiated proactively with suppliers, not due to cash flow stress.",
+          "required_documentation": [
+            "Supplier communications showing agreement to new terms",
+            "Updated supplier contracts",
+            "Cash flow forecasts and management cash position reports"
+          ],
+          "acceptance_criteria": "Supplier acceptance documented, no adverse supplier correspondence, cash balances stable or improving."
+        },
+        {
+          "claim_to_verify": "Inventory turnover decline reflects delayed shipments from one major customer, not a build-up of obsolete stock.",
+          "required_documentation": [
+            "Inventory aging analysis",
+            "Customer order/delivery schedules for affected SKUs",
+            "Correspondence with relevant customers"
+          ],
+          "acceptance_criteria": "Inventory aging profile demonstrates linkage to delayed sales, no material increase in obsolete or slow-moving inventory."
+        }
+      ],
+      "recommended_attendees": [
+        "CFO",
+        "Controller",
+        "VP Operations"
+      ],
+      "interview_duration_estimate": "90-120 minutes"
+    },
+    "metadata": {
+      "agent_name": "Interview Prep Agent",
+      "timestamp": "2024-06-21T14:01:53Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:41:00.435636",
+  "test_message_used": "Provide sample recommendations for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "interview_prep_summary": {
+        "total_questions_generated": 7,
+        "focus_areas": [
+          "reconciliation",
+          "qoe",
+          "nwc",
+          "operations"
+        ],
+        "priority_topics": [
+          "Q4 Accounts Receivable spike (45%)",
+          "Significant extension of payables period",
+          "Inventory turnover deterioration"
+        ]
+      },
+      "question_sets": [
+        {
+          "category": "Quality of Earnings",
+          "related_anomaly": "45% AR spike in Q4",
+          "severity": "Critical",
+          "questions": [
+            {
+              "question": "Can you explain the primary drivers behind the 45% spike in accounts receivable during Q4?",
+              "rationale": "Sudden spikes in AR could indicate aggressive revenue recognition, sales channel issues, or collection challenges.",
+              "validation_framework": "Review customer aging by cohort, compare Q4 contract terms to prior quarters, identify large or one-off receivables.",
+              "data_requests": [
+                "Q4 AR aging report by customer",
+                "List of top 10 outstanding AR accounts for Q4 and previous quarters",
+                "Copies of major contracts/invoices issued in Q4"
+              ],
+              "follow_up_questions": [
+                "Were any payment terms altered for key customers during Q4?",
+                "Did you recognize any revenue early or shift cut-off policies?",
+                "Are any of these receivables disputed or at risk of non-collection?"
+              ]
+            },
+            {
+              "question": "Were there changes in credit policies or sales push initiatives in Q4?",
+              "rationale": "Changes in policies or incentives can drive up receivables temporarily but with risk for collections.",
+              "validation_framework": "Compare Q4 sales incentives, policies to prior periods, and review internal communications on policy/accounting treatment.",
+              "data_requests": [
+                "Credit policy documentation Q3 vs Q4",
+                "Sales target or incentive communications for Q4"
+              ],
+              "follow_up_questions": [
+                "Did sales or finance teams flag any concerns regarding customer quality or payment timing?",
+                "Were any new or high-risk customers added in Q4?"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Working Capital",
+          "related_anomaly": "Payables stretched from 30 to 60 days",
+          "severity": "High",
+          "questions": [
+            {
+              "question": "What led to the extension of supplier payment terms from 30 to 60 days?",
+              "rationale": "Doubling payables period potentially signals cash flow stress or supplier negotiation changes.",
+              "validation_framework": "Corroborate explanations with supplier correspondence and changes in contract terms.",
+              "data_requests": [
+                "Vendor agreements with revised payment terms",
+                "AP aging schedules for current and previous periods",
+                "Correspondence with top 5 suppliers regarding terms changes"
+              ],
+              "follow_up_questions": [
+                "Were any suppliers resistant to term extensions?",
+                "Has this change impacted supply availability, pricing, or relationships?"
+              ]
+            },
+            {
+              "question": "Is there any correlation between the payables extension and the Q4 AR spike?",
+              "rationale": "Linked working capital movements could indicate larger liquidity or revenue recognition issues.",
+              "validation_framework": "Compare cash position, payables and AR movements by month; correlate with management reports.",
+              "data_requests": [
+                "Monthly cash flow statements Q3\u2013Q4",
+                "Management meeting minutes regarding liquidity management in Q3\u2013Q4"
+              ],
+              "follow_up_questions": [
+                "Were there discussions about optimizing working capital ahead of year-end?",
+                "Did any lenders impose new covenants or constraints?"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Operations",
+          "related_anomaly": "Inventory turnover decline",
+          "severity": "High",
+          "questions": [
+            {
+              "question": "What operational factors contributed to the decline in inventory turnover this period?",
+              "rationale": "Reduced turnover can reflect slowing sales, forecasting errors, or buildup of obsolete inventory.",
+              "validation_framework": "Analyze aging inventory reports, compare inventory composition and turnover rates to historical trends.",
+              "data_requests": [
+                "Inventory aging report",
+                "Inventory write-off/write-down records",
+                "Sales and production forecasts vs actuals for the period"
+              ],
+              "follow_up_questions": [
+                "Has there been an increase in excess or obsolete stock?",
+                "Did the company change procurement, stocking, or forecasting practices recently?"
+              ]
+            },
+            {
+              "question": "What measures has management taken to address slower inventory turnover?",
+              "rationale": "Management response indicates whether issue is ongoing or actively being managed.",
+              "validation_framework": "Review inventory management plans, discount/sell-through programs, operational KPIs.",
+              "data_requests": [
+                "Management presentations on inventory action plans",
+                "SKU-level inventory movements for current and previous years"
+              ],
+              "follow_up_questions": [
+                "What is the expected timeline for normalization?",
+                "Are there categories of inventory at particular risk?"
+              ]
+            }
+          ]
+        }
+      ],
+      "validation_checklist": [
+        {
+          "claim_to_verify": "The 45% AR increase in Q4 is attributed to normal seasonal sales, not collection risks.",
+          "required_documentation": [
+            "AR aging reports Q3 vs Q4 with customer detail",
+            "Sales contracts and invoicing history for Q4",
+            "Evidence of seasonal sales patterns (historical sales overrides)"
+          ],
+          "acceptance_criteria": "Documented seasonal pattern in prior years, no material increase in overdue or disputed AR, no major changes to customer credit risk profile."
+        },
+        {
+          "claim_to_verify": "Extension of payables was negotiated proactively with suppliers, not due to cash flow stress.",
+          "required_documentation": [
+            "Supplier communications showing agreement to new terms",
+            "Updated supplier contracts",
+            "Cash flow forecasts and management cash position reports"
+          ],
+          "acceptance_criteria": "Supplier acceptance documented, no adverse supplier correspondence, cash balances stable or improving."
+        },
+        {
+          "claim_to_verify": "Inventory turnover decline reflects delayed shipments from one major customer, not a build-up of obsolete stock.",
+          "required_documentation": [
+            "Inventory aging analysis",
+            "Customer order/delivery schedules for affected SKUs",
+            "Correspondence with relevant customers"
+          ],
+          "acceptance_criteria": "Inventory aging profile demonstrates linkage to delayed sales, no material increase in obsolete or slow-moving inventory."
+        }
+      ],
+      "recommended_attendees": [
+        "CFO",
+        "Controller",
+        "VP Operations"
+      ],
+      "interview_duration_estimate": "90-120 minutes"
+    },
+    "metadata": {
+      "agent_name": "Interview Prep Agent",
+      "timestamp": "2024-06-21T14:01:53Z"
+    }
+  },
+  "test_passed": true
+}

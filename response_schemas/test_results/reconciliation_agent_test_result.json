@@ -1,0 +1,46 @@
+{
+  "agent_name": "Reconciliation Agent",
+  "agent_id": "6970c777d6d0dcaec1117e73",
+  "test_message": "Compare the Trial Balance total assets of $5.2M against audited financial statement showing $5.4M. Identify discrepancies by account.",
+  "expected_purpose": "assistant",
+  "timestamp": "2026-01-21T12:40:16.724068",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "reconciliation_status": "partial",
+      "total_accounts_compared": 1,
+      "discrepancies_found": 1,
+      "discrepancies": [
+        {
+          "account_code": "TOTAL_ASSETS",
+          "account_name": "Total Assets",
+          "trial_balance": 5200000.0,
+          "audited_statement": 5400000.0,
+          "variance": 200000.0,
+          "variance_percentage": 3.85,
+          "severity": "High",
+          "explanation": "Total assets on the Trial Balance are $200,000 (3.85%) lower than the audited financial statement. This is a material variance in absolute terms, though not exceeding 5%, indicating potential adjustments or missing asset entries that require investigation."
+        }
+      ],
+      "summary": {
+        "critical_issues": 0,
+        "high_issues": 1,
+        "medium_issues": 0,
+        "low_issues": 0,
+        "total_variance_amount": 200000.0
+      },
+      "recommendations": [
+        "Investigate asset accounts contributing to the $200,000 discrepancy between Trial Balance and the audited financial statement.",
+        "Review reconciliations for fixed assets, receivables, and other major asset categories for possible omissions or audit adjustments.",
+        "Request a breakdown of adjusting entries made during the audit to explain the variance."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Reconciliation Agent",
+      "timestamp": "2024-06-16T06:44:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"reconciliation_status\": \"partial\",\n    \"total_accounts_compared\": 1,\n    \"discrepancies_found\": 1,\n    \"discrepancies\": [\n      {\n        \"account_code\": \"TOTAL_ASSETS\",\n        \"account_name\": \"Total Assets\",\n        \"trial_balance\": 5200000.00,\n        \"audited_statement\": 5400000.00,\n        \"variance\": 200000.00,\n        \"variance_percentage\": 3.85,\n        \"severity\": \"High\",\n        \"explanation\": \"Total assets on the Trial Balance are $200,000 (3.85%) lower than the audited financial statement. This is a material variance in absolute terms, though not exceeding 5%, indicating potential adjustments or missing asset entries that require investigation.\"\n      }\n    ],\n    \"summary\": {\n      \"critical_issues\": 0,\n      \"high_issues\": 1,\n      \"medium_issues\": 0,\n      \"low_issues\": 0,\n      \"total_variance_amount\": 200000.00\n    },\n    \"recommendations\": [\n      \"Investigate asset accounts contributing to the $200,000 discrepancy between Trial Balance and the audited financial statement.\",\n      \"Review reconciliations for fixed assets, receivables, and other major asset categories for possible omissions or audit adjustments.\",\n      \"Request a breakdown of adjusting entries made during the audit to explain the variance.\"\n    ]\n  },\n  \"metadata\": {\n    \"agent_name\": \"Reconciliation Agent\",\n    \"timestamp\": \"2024-06-16T06:44:00Z\"\n  }\n}"
+}

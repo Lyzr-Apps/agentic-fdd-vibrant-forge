@@ -1,0 +1,158 @@
+{
+  "agent_name": "QoE Analysis Agent",
+  "agent_id": "6970c7921d92f5e2dd22a527",
+  "agent_purpose": "analyzer",
+  "description": "Identifies EBITDA add-backs, calculates normalized EBITDA with quality assessment and defensibility ratings",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "reported_ebitda": "number",
+      "total_addbacks": "number",
+      "normalized_ebitda": "number",
+      "addback_categories": [
+        {
+          "category": "string",
+          "description": "string",
+          "amount": "number",
+          "rationale": "string",
+          "defensibility": "string",
+          "supporting_evidence": "string"
+        }
+      ],
+      "ebitda_bridge": {
+        "reported_ebitda": "number",
+        "personal_expenses": "number",
+        "one_time_fees": "number",
+        "litigation_costs": "number",
+        "owner_compensation_adj": "number",
+        "other_adjustments": "number",
+        "normalized_ebitda": "number"
+      },
+      "quality_assessment": {
+        "revenue_quality_score": "number",
+        "expense_quality_score": "number",
+        "overall_earnings_quality": "string",
+        "red_flags": [
+          "string"
+        ]
+      },
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "reported_ebitda": 0.0,
+      "total_addbacks": 64,
+      "normalized_ebitda": 64,
+      "addback_categories": [
+        {
+          "category": "One-time legal settlement",
+          "description": "Non-recurring legal expense for settlement unrelated to ongoing business operations.",
+          "amount": 50000.0,
+          "rationale": "This legal expense is considered non-recurring and unrelated to ongoing operations. Excluding it provides a clearer view of sustainable EBITDA.",
+          "defensibility": "High",
+          "supporting_evidence": "Settlement agreement and payment documentation."
+        },
+        {
+          "category": "Personal Expenses",
+          "description": "Personal auto lease paid by company for CEO.",
+          "amount": 14400.0,
+          "rationale": "The auto lease is a personal expense and not required for business operations. Removing it aligns EBITDA with core business profitability.",
+          "defensibility": "High",
+          "supporting_evidence": "Vehicle lease agreement and expense policy comparison."
+        }
+      ],
+      "ebitda_bridge": {
+        "reported_ebitda": 0.0,
+        "personal_expenses": 14400.0,
+        "one_time_fees": 50000.0,
+        "litigation_costs": 0.0,
+        "owner_compensation_adj": 0.0,
+        "other_adjustments": 0.0,
+        "normalized_ebitda": 64400.0
+      },
+      "quality_assessment": {
+        "revenue_quality_score": 8.0,
+        "expense_quality_score": 8.5,
+        "overall_earnings_quality": "High",
+        "red_flags": [
+          "Potential overcompensation: CEO salary requires market benchmarking for owner compensation adjustment.",
+          "R&D cost add-back not justified unless proven non-recurring or not core to business."
+        ]
+      },
+      "recommendations": [
+        "Benchmark CEO salary against market to determine if an owner compensation adjustment is warranted.",
+        "Provide clear documentation supporting non-recurring nature of the legal settlement.",
+        "Review other expense categories for further personal or non-recurring items."
+      ]
+    },
+    "metadata": {
+      "agent_name": "QoE Analysis Agent",
+      "timestamp": "2024-06-17T16:01:39Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:40:24.709297",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "reported_ebitda": 0.0,
+      "total_addbacks": 64,
+      "normalized_ebitda": 64,
+      "addback_categories": [
+        {
+          "category": "One-time legal settlement",
+          "description": "Non-recurring legal expense for settlement unrelated to ongoing business operations.",
+          "amount": 50000.0,
+          "rationale": "This legal expense is considered non-recurring and unrelated to ongoing operations. Excluding it provides a clearer view of sustainable EBITDA.",
+          "defensibility": "High",
+          "supporting_evidence": "Settlement agreement and payment documentation."
+        },
+        {
+          "category": "Personal Expenses",
+          "description": "Personal auto lease paid by company for CEO.",
+          "amount": 14400.0,
+          "rationale": "The auto lease is a personal expense and not required for business operations. Removing it aligns EBITDA with core business profitability.",
+          "defensibility": "High",
+          "supporting_evidence": "Vehicle lease agreement and expense policy comparison."
+        }
+      ],
+      "ebitda_bridge": {
+        "reported_ebitda": 0.0,
+        "personal_expenses": 14400.0,
+        "one_time_fees": 50000.0,
+        "litigation_costs": 0.0,
+        "owner_compensation_adj": 0.0,
+        "other_adjustments": 0.0,
+        "normalized_ebitda": 64400.0
+      },
+      "quality_assessment": {
+        "revenue_quality_score": 8.0,
+        "expense_quality_score": 8.5,
+        "overall_earnings_quality": "High",
+        "red_flags": [
+          "Potential overcompensation: CEO salary requires market benchmarking for owner compensation adjustment.",
+          "R&D cost add-back not justified unless proven non-recurring or not core to business."
+        ]
+      },
+      "recommendations": [
+        "Benchmark CEO salary against market to determine if an owner compensation adjustment is warranted.",
+        "Provide clear documentation supporting non-recurring nature of the legal settlement.",
+        "Review other expense categories for further personal or non-recurring items."
+      ]
+    },
+    "metadata": {
+      "agent_name": "QoE Analysis Agent",
+      "timestamp": "2024-06-17T16:01:39Z"
+    }
+  },
+  "test_passed": true
+}

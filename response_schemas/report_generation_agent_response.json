@@ -1,0 +1,357 @@
+{
+  "agent_name": "Report Generation Agent",
+  "agent_id": "6970c82a1d92f5e2dd22a552",
+  "agent_purpose": "analyzer",
+  "description": "Generates comprehensive FDD report with executive summary, EBITDA bridge, QoE analysis, NWC summary, and SPA negotiation points",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "report_metadata": {
+        "report_id": "string",
+        "company_name": "string",
+        "report_date": "string",
+        "report_type": "string"
+      },
+      "executive_summary": {
+        "overall_risk_rating": "string",
+        "investment_recommendation": "string",
+        "key_highlights": [
+          "string"
+        ],
+        "critical_issues": [
+          "string"
+        ],
+        "value_drivers": [
+          "string"
+        ]
+      },
+      "ebitda_bridge": {
+        "reported_ebitda": "number",
+        "adjustments": [
+          {
+            "category": "string",
+            "amount": "number",
+            "defensibility": "string"
+          }
+        ],
+        "normalized_ebitda": "number",
+        "ebitda_multiple_impact": "number"
+      },
+      "qoe_summary": {
+        "total_addbacks": "number",
+        "addback_categories": [
+          {
+            "category": "string",
+            "amount": "number",
+            "defensibility": "string"
+          }
+        ],
+        "quality_assessment": "string"
+      },
+      "nwc_summary": {
+        "current_nwc": "number",
+        "recommended_target": "number",
+        "adjustment_impact": "number",
+        "manipulation_flags": [
+          "string"
+        ]
+      },
+      "red_flags": {
+        "critical": [
+          "string"
+        ],
+        "high": [
+          "string"
+        ],
+        "medium": [
+          "string"
+        ]
+      },
+      "spa_negotiation_points": [
+        {
+          "topic": "string",
+          "recommendation": "string",
+          "financial_impact": "number",
+          "priority": "string"
+        }
+      ],
+      "price_adjustments": {
+        "recommended_valuation_discount": "number",
+        "nwc_peg_adjustment": "number",
+        "total_impact": "number",
+        "rationale": "string"
+      },
+      "next_steps": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "report_metadata": {
+        "report_id": "FDD-2024-ABC-001",
+        "company_name": "ABC Manufacturing",
+        "report_date": "2024-06-10",
+        "report_type": "Full FDD Report"
+      },
+      "executive_summary": {
+        "overall_risk_rating": "Medium",
+        "investment_recommendation": "Proceed with Conditions",
+        "key_highlights": [
+          "Normalized EBITDA improved by $264k from reported results",
+          "CEO salary adjustment is a legitimate but scrutinizable add-back",
+          "Legal settlement appears non-recurring, though documentation required",
+          "Personal expenses adjustment is minor but highlights G&A scrutiny"
+        ],
+        "critical_issues": [
+          "Aged accounts receivable indicate potential collection issues",
+          "Payables stretching suggests potential liquidity management concerns"
+        ],
+        "value_drivers": [
+          "Strong core EBITDA and resilient customer base",
+          "Potential for G&A optimization post-transaction",
+          "Add-back adjustments largely defensible with appropriate documentation"
+        ]
+      },
+      "ebitda_bridge": {
+        "reported_ebitda": 5000000.0,
+        "adjustments": [
+          {
+            "category": "CEO Salary Add-back",
+            "amount": 200000.0,
+            "defensibility": "Medium"
+          },
+          {
+            "category": "Legal Settlement",
+            "amount": 50000.0,
+            "defensibility": "High"
+          },
+          {
+            "category": "Personal Expenses",
+            "amount": 14000.0,
+            "defensibility": "Medium"
+          }
+        ],
+        "normalized_ebitda": 5264000.0,
+        "ebitda_multiple_impact": 2640000.0
+      },
+      "qoe_summary": {
+        "total_addbacks": 264000.0,
+        "addback_categories": [
+          {
+            "category": "CEO Salary Add-back",
+            "amount": 200000.0,
+            "defensibility": "Medium"
+          },
+          {
+            "category": "Legal Settlement",
+            "amount": 50000.0,
+            "defensibility": "High"
+          },
+          {
+            "category": "Personal Expenses",
+            "amount": 14000.0,
+            "defensibility": "Medium"
+          }
+        ],
+        "quality_assessment": "Medium"
+      },
+      "nwc_summary": {
+        "current_nwc": 1200000.0,
+        "recommended_target": 1400000.0,
+        "adjustment_impact": 200000.0,
+        "manipulation_flags": [
+          "AR aging indicates delayed collections and possible bad debts",
+          "Payables stretching used for liquidity management\u2014possible unsustainable working capital practices"
+        ]
+      },
+      "red_flags": {
+        "critical": [
+          "Significant AR aging raises collectability concerns"
+        ],
+        "high": [
+          "Stretching payables may mask underlying liquidity constraints"
+        ],
+        "medium": [
+          "Personal expenses recorded through business account"
+        ]
+      },
+      "spa_negotiation_points": [
+        {
+          "topic": "NWC Target Setting",
+          "recommendation": "Base NWC target on an average excluding outlier months of deferred receivables and stretched payables; require post-close adjustment mechanisms.",
+          "financial_impact": 200000.0,
+          "priority": "High"
+        },
+        {
+          "topic": "Add-back Documentation",
+          "recommendation": "Require seller to provide legal documentation supporting non-recurring legal settlements and detailed breakdowns for personal expense add-backs.",
+          "financial_impact": 64000.0,
+          "priority": "Medium"
+        },
+        {
+          "topic": "Indemnities for AR Quality",
+          "recommendation": "Include specific indemnities or escrow provisions for uncollectible accounts receivable over 90 days.",
+          "financial_impact": 100000.0,
+          "priority": "High"
+        }
+      ],
+      "price_adjustments": {
+        "recommended_valuation_discount": 150000.0,
+        "nwc_peg_adjustment": 200000.0,
+        "total_impact": 350000.0,
+        "rationale": "Discount driven by potential AR write-offs and sustainability of payables management; NWC peg adjustment sets buyer protection against liquidity risks surface through working capital manipulation."
+      },
+      "next_steps": [
+        "Obtain detailed AR aging and analyze historical collection patterns",
+        "Request documentation for all proposed add-backs",
+        "Analyze supplier payment terms and any negotiation support for payables stretching",
+        "Confirm projected NWC levels under normalized collection and payment cycles",
+        "Engage legal counsel to draft SPA language for AR indemnities and NWC adjustment"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Report Generation Agent",
+      "timestamp": "2024-06-10T14:22:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:41:13.266314",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "report_metadata": {
+        "report_id": "FDD-2024-ABC-001",
+        "company_name": "ABC Manufacturing",
+        "report_date": "2024-06-10",
+        "report_type": "Full FDD Report"
+      },
+      "executive_summary": {
+        "overall_risk_rating": "Medium",
+        "investment_recommendation": "Proceed with Conditions",
+        "key_highlights": [
+          "Normalized EBITDA improved by $264k from reported results",
+          "CEO salary adjustment is a legitimate but scrutinizable add-back",
+          "Legal settlement appears non-recurring, though documentation required",
+          "Personal expenses adjustment is minor but highlights G&A scrutiny"
+        ],
+        "critical_issues": [
+          "Aged accounts receivable indicate potential collection issues",
+          "Payables stretching suggests potential liquidity management concerns"
+        ],
+        "value_drivers": [
+          "Strong core EBITDA and resilient customer base",
+          "Potential for G&A optimization post-transaction",
+          "Add-back adjustments largely defensible with appropriate documentation"
+        ]
+      },
+      "ebitda_bridge": {
+        "reported_ebitda": 5000000.0,
+        "adjustments": [
+          {
+            "category": "CEO Salary Add-back",
+            "amount": 200000.0,
+            "defensibility": "Medium"
+          },
+          {
+            "category": "Legal Settlement",
+            "amount": 50000.0,
+            "defensibility": "High"
+          },
+          {
+            "category": "Personal Expenses",
+            "amount": 14000.0,
+            "defensibility": "Medium"
+          }
+        ],
+        "normalized_ebitda": 5264000.0,
+        "ebitda_multiple_impact": 2640000.0
+      },
+      "qoe_summary": {
+        "total_addbacks": 264000.0,
+        "addback_categories": [
+          {
+            "category": "CEO Salary Add-back",
+            "amount": 200000.0,
+            "defensibility": "Medium"
+          },
+          {
+            "category": "Legal Settlement",
+            "amount": 50000.0,
+            "defensibility": "High"
+          },
+          {
+            "category": "Personal Expenses",
+            "amount": 14000.0,
+            "defensibility": "Medium"
+          }
+        ],
+        "quality_assessment": "Medium"
+      },
+      "nwc_summary": {
+        "current_nwc": 1200000.0,
+        "recommended_target": 1400000.0,
+        "adjustment_impact": 200000.0,
+        "manipulation_flags": [
+          "AR aging indicates delayed collections and possible bad debts",
+          "Payables stretching used for liquidity management\u2014possible unsustainable working capital practices"
+        ]
+      },
+      "red_flags": {
+        "critical": [
+          "Significant AR aging raises collectability concerns"
+        ],
+        "high": [
+          "Stretching payables may mask underlying liquidity constraints"
+        ],
+        "medium": [
+          "Personal expenses recorded through business account"
+        ]
+      },
+      "spa_negotiation_points": [
+        {
+          "topic": "NWC Target Setting",
+          "recommendation": "Base NWC target on an average excluding outlier months of deferred receivables and stretched payables; require post-close adjustment mechanisms.",
+          "financial_impact": 200000.0,
+          "priority": "High"
+        },
+        {
+          "topic": "Add-back Documentation",
+          "recommendation": "Require seller to provide legal documentation supporting non-recurring legal settlements and detailed breakdowns for personal expense add-backs.",
+          "financial_impact": 64000.0,
+          "priority": "Medium"
+        },
+        {
+          "topic": "Indemnities for AR Quality",
+          "recommendation": "Include specific indemnities or escrow provisions for uncollectible accounts receivable over 90 days.",
+          "financial_impact": 100000.0,
+          "priority": "High"
+        }
+      ],
+      "price_adjustments": {
+        "recommended_valuation_discount": 150000.0,
+        "nwc_peg_adjustment": 200000.0,
+        "total_impact": 350000.0,
+        "rationale": "Discount driven by potential AR write-offs and sustainability of payables management; NWC peg adjustment sets buyer protection against liquidity risks surface through working capital manipulation."
+      },
+      "next_steps": [
+        "Obtain detailed AR aging and analyze historical collection patterns",
+        "Request documentation for all proposed add-backs",
+        "Analyze supplier payment terms and any negotiation support for payables stretching",
+        "Confirm projected NWC levels under normalized collection and payment cycles",
+        "Engage legal counsel to draft SPA language for AR indemnities and NWC adjustment"
+      ]
+    },
+    "metadata": {
+      "agent_name": "Report Generation Agent",
+      "timestamp": "2024-06-10T14:22:00Z"
+    }
+  },
+  "test_passed": true
+}

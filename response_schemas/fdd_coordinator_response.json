@@ -1,0 +1,237 @@
+{
+  "agent_name": "FDD Coordinator",
+  "agent_id": "6970c7d71d92f5e2dd22a543",
+  "agent_purpose": "manager",
+  "description": "Orchestrates FDD workflow across sub-agents, aggregates findings, identifies cross-functional red flags",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "workflow_status": "string",
+      "sub_agent_results": {
+        "data_extraction": "string",
+        "reconciliation": "string",
+        "qoe_analysis": "string",
+        "nwc_analysis": "string"
+      },
+      "aggregated_findings": {
+        "total_red_flags": "number",
+        "critical_issues": "number",
+        "high_priority_issues": "number",
+        "cross_functional_risks": [
+          {
+            "risk_type": "string",
+            "description": "string",
+            "affected_areas": [
+              "string"
+            ],
+            "severity": "string",
+            "recommended_action": "string"
+          }
+        ]
+      },
+      "executive_summary": {
+        "overall_risk_rating": "string",
+        "key_findings": [
+          "string"
+        ],
+        "deal_breakers": [
+          "string"
+        ],
+        "negotiation_points": [
+          "string"
+        ]
+      },
+      "next_steps": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "workflow_status": "complete",
+      "sub_agent_results": {
+        "data_extraction": "complete",
+        "reconciliation": "failed",
+        "qoe_analysis": "complete",
+        "nwc_analysis": "complete"
+      },
+      "aggregated_findings": {
+        "total_red_flags": 7,
+        "critical_issues": 1,
+        "high_priority_issues": 3,
+        "cross_functional_risks": [
+          {
+            "risk_type": "Aggressive Working Capital Management and Earnings Normalization",
+            "description": "Significant payables stretching, AR aging, and inflated inventory levels are inflating NWC while recurring personal expenses and one-time add-backs impact normalized EBITDA. These patterns, if reversed post-close, threaten both deal value and day-one liquidity.",
+            "affected_areas": [
+              "qoe",
+              "nwc"
+            ],
+            "severity": "Critical",
+            "recommended_action": "Set NWC peg at a normalized level excluding excess AP/AR and slow inventory; require seller guarantee or compensation for payables aged over 60 days and for all AR/inventory write-offs post-close."
+          },
+          {
+            "risk_type": "Recurring Add-Backs & Non-Business Expenses",
+            "description": "QOE reveals recurring owner personal charges and a high frequency of aggressive EBITDA add-backs, raising concerns of sustainable earnings normalization.",
+            "affected_areas": [
+              "qoe"
+            ],
+            "severity": "High",
+            "recommended_action": "Audit supporting documentation for all add-backs and implement stricter expense segregation policies post-acquisition."
+          },
+          {
+            "risk_type": "Revenue Recognition Risk with AR Buildup",
+            "description": "Material increase in old AR balances while sales show no matching cash realization, suggesting risk of uncollectible revenue.",
+            "affected_areas": [
+              "qoe",
+              "nwc"
+            ],
+            "severity": "High",
+            "recommended_action": "Insist on AR quality reps & warranties in purchase agreement, and exclude >90-day AR from value."
+          },
+          {
+            "risk_type": "Inventory Obsolescence and Write-Offs",
+            "description": "Spike in inventory write-offs and slow-moving stock points to potential manipulation or concealment of deeper operational issues.",
+            "affected_areas": [
+              "nwc",
+              "qoe"
+            ],
+            "severity": "Medium",
+            "recommended_action": "Adjust offer and NWC target downward; require proof of discontinued lines and apply haircut to old inventory\u2019s value."
+          }
+        ]
+      },
+      "executive_summary": {
+        "overall_risk_rating": "High",
+        "key_findings": [
+          "Significant payables stretching (DPO up to 61 days), artificially inflating working capital.",
+          "Accounts receivable aging >90 days climbed 22% in Q4, indicating collectability risk.",
+          "Notable spike in slow-moving inventory with limited write-offs; 19% rise in items >180 days aged.",
+          "Normalized EBITDA features recurring and aggressive add-backs for personal expenses and owner compensation.",
+          "Reconciliation failed: no detailed audited account data provided, preventing full verification."
+        ],
+        "deal_breakers": [
+          "No reconciliation possible without detailed audited account-level data.",
+          "Unsustainable NWC profile and inflated closing NWC peg due to aggressive AP/AR and inventory practices."
+        ],
+        "negotiation_points": [
+          "Set NWC peg at a normalized level, excluding excess AR/AP and aging inventory.",
+          "Insist on AR and inventory quality reps & warranties and price adjustments for AR/inventory issues pre-close.",
+          "Implement post-closing escrow/holdbacks for unresolved AP, AR, and inventory balances.",
+          "Review and test defensibility of all EBITDA add-backs with third-party support."
+        ]
+      },
+      "next_steps": [
+        "Request detailed account-level audited financials and trial balance for reconciliation.",
+        "Negotiate SPA terms to exclude excess AP/AR and slow inventory from NWC peg.",
+        "Perform forensic AR and inventory review to quantify economic exposure.",
+        "Obtain written confirmation of closure of discontinued product lines.",
+        "Commission independent compensation benchmarking for owner/management.",
+        "Structure deal to protect against post-close working capital reversals (escrow/holdbacks)."
+      ]
+    },
+    "metadata": {
+      "agent_name": "FDD Coordinator",
+      "timestamp": "2024-06-16T17:47:05Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:40:08.614209",
+  "test_message_used": "Process this request and coordinate sub-agents",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "workflow_status": "complete",
+      "sub_agent_results": {
+        "data_extraction": "complete",
+        "reconciliation": "failed",
+        "qoe_analysis": "complete",
+        "nwc_analysis": "complete"
+      },
+      "aggregated_findings": {
+        "total_red_flags": 7,
+        "critical_issues": 1,
+        "high_priority_issues": 3,
+        "cross_functional_risks": [
+          {
+            "risk_type": "Aggressive Working Capital Management and Earnings Normalization",
+            "description": "Significant payables stretching, AR aging, and inflated inventory levels are inflating NWC while recurring personal expenses and one-time add-backs impact normalized EBITDA. These patterns, if reversed post-close, threaten both deal value and day-one liquidity.",
+            "affected_areas": [
+              "qoe",
+              "nwc"
+            ],
+            "severity": "Critical",
+            "recommended_action": "Set NWC peg at a normalized level excluding excess AP/AR and slow inventory; require seller guarantee or compensation for payables aged over 60 days and for all AR/inventory write-offs post-close."
+          },
+          {
+            "risk_type": "Recurring Add-Backs & Non-Business Expenses",
+            "description": "QOE reveals recurring owner personal charges and a high frequency of aggressive EBITDA add-backs, raising concerns of sustainable earnings normalization.",
+            "affected_areas": [
+              "qoe"
+            ],
+            "severity": "High",
+            "recommended_action": "Audit supporting documentation for all add-backs and implement stricter expense segregation policies post-acquisition."
+          },
+          {
+            "risk_type": "Revenue Recognition Risk with AR Buildup",
+            "description": "Material increase in old AR balances while sales show no matching cash realization, suggesting risk of uncollectible revenue.",
+            "affected_areas": [
+              "qoe",
+              "nwc"
+            ],
+            "severity": "High",
+            "recommended_action": "Insist on AR quality reps & warranties in purchase agreement, and exclude >90-day AR from value."
+          },
+          {
+            "risk_type": "Inventory Obsolescence and Write-Offs",
+            "description": "Spike in inventory write-offs and slow-moving stock points to potential manipulation or concealment of deeper operational issues.",
+            "affected_areas": [
+              "nwc",
+              "qoe"
+            ],
+            "severity": "Medium",
+            "recommended_action": "Adjust offer and NWC target downward; require proof of discontinued lines and apply haircut to old inventory\u2019s value."
+          }
+        ]
+      },
+      "executive_summary": {
+        "overall_risk_rating": "High",
+        "key_findings": [
+          "Significant payables stretching (DPO up to 61 days), artificially inflating working capital.",
+          "Accounts receivable aging >90 days climbed 22% in Q4, indicating collectability risk.",
+          "Notable spike in slow-moving inventory with limited write-offs; 19% rise in items >180 days aged.",
+          "Normalized EBITDA features recurring and aggressive add-backs for personal expenses and owner compensation.",
+          "Reconciliation failed: no detailed audited account data provided, preventing full verification."
+        ],
+        "deal_breakers": [
+          "No reconciliation possible without detailed audited account-level data.",
+          "Unsustainable NWC profile and inflated closing NWC peg due to aggressive AP/AR and inventory practices."
+        ],
+        "negotiation_points": [
+          "Set NWC peg at a normalized level, excluding excess AR/AP and aging inventory.",
+          "Insist on AR and inventory quality reps & warranties and price adjustments for AR/inventory issues pre-close.",
+          "Implement post-closing escrow/holdbacks for unresolved AP, AR, and inventory balances.",
+          "Review and test defensibility of all EBITDA add-backs with third-party support."
+        ]
+      },
+      "next_steps": [
+        "Request detailed account-level audited financials and trial balance for reconciliation.",
+        "Negotiate SPA terms to exclude excess AP/AR and slow inventory from NWC peg.",
+        "Perform forensic AR and inventory review to quantify economic exposure.",
+        "Obtain written confirmation of closure of discontinued product lines.",
+        "Commission independent compensation benchmarking for owner/management.",
+        "Structure deal to protect against post-close working capital reversals (escrow/holdbacks)."
+      ]
+    },
+    "metadata": {
+      "agent_name": "FDD Coordinator",
+      "timestamp": "2024-06-16T17:47:05Z"
+    }
+  },
+  "test_passed": true
+}

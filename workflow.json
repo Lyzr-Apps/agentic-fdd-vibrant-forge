@@ -1,0 +1,187 @@
+{
+  "workflow_id": "pe_fdd_platform",
+  "workflow_name": "Private Equity FDD Platform",
+  "description": "Orchestrates financial due diligence analysis with specialized sub-agents for data extraction, reconciliation, QoE analysis, and NWC analysis",
+  "version": "1.0.0",
+  "created_at": "2026-01-21T00:00:00Z",
+  "nodes": [
+    {
+      "id": "data_room_input",
+      "type": "Input",
+      "label": "Data Room Upload",
+      "nodeCategory": "input",
+      "position": {"x": 100, "y": 100}
+    },
+    {
+      "id": "fdd_coordinator",
+      "type": "Agent",
+      "label": "FDD Coordinator",
+      "nodeCategory": "agent",
+      "agent_id": "6970c7d71d92f5e2dd22a543",
+      "position": {"x": 400, "y": 100}
+    },
+    {
+      "id": "data_extraction",
+      "type": "Agent",
+      "label": "Data Extraction Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c7631d92f5e2dd22a517",
+      "position": {"x": 700, "y": 50}
+    },
+    {
+      "id": "reconciliation",
+      "type": "Agent",
+      "label": "Reconciliation Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c777d6d0dcaec1117e73",
+      "position": {"x": 700, "y": 150}
+    },
+    {
+      "id": "qoe_analysis",
+      "type": "Agent",
+      "label": "QoE Analysis Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c7921d92f5e2dd22a527",
+      "position": {"x": 700, "y": 250}
+    },
+    {
+      "id": "nwc_analysis",
+      "type": "Agent",
+      "label": "NWC Analysis Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c7b51d92f5e2dd22a537",
+      "position": {"x": 700, "y": 350}
+    },
+    {
+      "id": "findings_output",
+      "type": "Output",
+      "label": "Analysis Findings",
+      "nodeCategory": "end",
+      "position": {"x": 1000, "y": 200}
+    },
+    {
+      "id": "interview_prep_input",
+      "type": "Input",
+      "label": "Generate Interview Prep",
+      "nodeCategory": "input",
+      "position": {"x": 100, "y": 500}
+    },
+    {
+      "id": "interview_prep",
+      "type": "Agent",
+      "label": "Interview Prep Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c7fad6d0dcaec1117eaf",
+      "position": {"x": 400, "y": 500}
+    },
+    {
+      "id": "interview_output",
+      "type": "Output",
+      "label": "Interview Questions",
+      "nodeCategory": "end",
+      "position": {"x": 700, "y": 500}
+    },
+    {
+      "id": "report_input",
+      "type": "Input",
+      "label": "Generate Report",
+      "nodeCategory": "input",
+      "position": {"x": 100, "y": 700}
+    },
+    {
+      "id": "report_generation",
+      "type": "Agent",
+      "label": "Report Generation Agent",
+      "nodeCategory": "agent",
+      "agent_id": "6970c82a1d92f5e2dd22a552",
+      "position": {"x": 400, "y": 700}
+    },
+    {
+      "id": "report_output",
+      "type": "Output",
+      "label": "FDD Report",
+      "nodeCategory": "end",
+      "position": {"x": 700, "y": 700}
+    }
+  ],
+  "edges": [
+    {"source": "data_room_input", "target": "fdd_coordinator", "id": "e1"},
+    {"source": "fdd_coordinator", "target": "data_extraction", "id": "e2"},
+    {"source": "fdd_coordinator", "target": "reconciliation", "id": "e3"},
+    {"source": "fdd_coordinator", "target": "qoe_analysis", "id": "e4"},
+    {"source": "fdd_coordinator", "target": "nwc_analysis", "id": "e5"},
+    {"source": "data_extraction", "target": "findings_output", "id": "e6"},
+    {"source": "reconciliation", "target": "findings_output", "id": "e7"},
+    {"source": "qoe_analysis", "target": "findings_output", "id": "e8"},
+    {"source": "nwc_analysis", "target": "findings_output", "id": "e9"},
+    {"source": "interview_prep_input", "target": "interview_prep", "id": "e10"},
+    {"source": "interview_prep", "target": "interview_output", "id": "e11"},
+    {"source": "report_input", "target": "report_generation", "id": "e12"},
+    {"source": "report_generation", "target": "report_output", "id": "e13"}
+  ],
+  "agents": {
+    "manager": [
+      {
+        "agent_id": "6970c7d71d92f5e2dd22a543",
+        "name": "FDD Coordinator",
+        "type": "Manager",
+        "node_id": "fdd_coordinator",
+        "manages": [
+          "6970c7631d92f5e2dd22a517",
+          "6970c777d6d0dcaec1117e73",
+          "6970c7921d92f5e2dd22a527",
+          "6970c7b51d92f5e2dd22a537"
+        ]
+      }
+    ],
+    "sub_agents": [
+      {
+        "agent_id": "6970c7631d92f5e2dd22a517",
+        "name": "Data Extraction Agent",
+        "type": "Sub-Agent",
+        "node_id": "data_extraction",
+        "managed_by": "6970c7d71d92f5e2dd22a543"
+      },
+      {
+        "agent_id": "6970c777d6d0dcaec1117e73",
+        "name": "Reconciliation Agent",
+        "type": "Sub-Agent",
+        "node_id": "reconciliation",
+        "managed_by": "6970c7d71d92f5e2dd22a543"
+      },
+      {
+        "agent_id": "6970c7921d92f5e2dd22a527",
+        "name": "QoE Analysis Agent",
+        "type": "Sub-Agent",
+        "node_id": "qoe_analysis",
+        "managed_by": "6970c7d71d92f5e2dd22a543"
+      },
+      {
+        "agent_id": "6970c7b51d92f5e2dd22a537",
+        "name": "NWC Analysis Agent",
+        "type": "Sub-Agent",
+        "node_id": "nwc_analysis",
+        "managed_by": "6970c7d71d92f5e2dd22a543"
+      }
+    ],
+    "independent": [
+      {
+        "agent_id": "6970c7fad6d0dcaec1117eaf",
+        "name": "Interview Prep Agent",
+        "type": "Independent",
+        "node_id": "interview_prep"
+      },
+      {
+        "agent_id": "6970c82a1d92f5e2dd22a552",
+        "name": "Report Generation Agent",
+        "type": "Independent",
+        "node_id": "report_generation"
+      }
+    ]
+  },
+  "configuration": {
+    "provider": "OpenAI",
+    "default_model": "gpt-4.1",
+    "response_format": "json"
+  }
+}

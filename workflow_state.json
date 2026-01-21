@@ -1,0 +1,112 @@
+{
+  "workflow_created": true,
+  "agents": {
+    "manager": {
+      "fdd_coordinator": {
+        "agent_id": "6970c7d71d92f5e2dd22a543",
+        "name": "FDD Coordinator",
+        "type": "Manager",
+        "status": "created",
+        "schema_saved": true
+      }
+    },
+    "sub_agents": {
+      "data_extraction_agent": {
+        "agent_id": "6970c7631d92f5e2dd22a517",
+        "name": "Data Extraction Agent",
+        "type": "Sub-Agent",
+        "status": "created",
+        "schema_saved": true
+      },
+      "reconciliation_agent": {
+        "agent_id": "6970c777d6d0dcaec1117e73",
+        "name": "Reconciliation Agent",
+        "type": "Sub-Agent",
+        "status": "created",
+        "schema_saved": true
+      },
+      "qoe_analysis_agent": {
+        "agent_id": "6970c7921d92f5e2dd22a527",
+        "name": "QoE Analysis Agent",
+        "type": "Sub-Agent",
+        "status": "created",
+        "schema_saved": true
+      },
+      "nwc_analysis_agent": {
+        "agent_id": "6970c7b51d92f5e2dd22a537",
+        "name": "NWC Analysis Agent",
+        "type": "Sub-Agent",
+        "status": "created",
+        "schema_saved": true
+      }
+    },
+    "independent": {
+      "interview_prep_agent": {
+        "agent_id": "6970c7fad6d0dcaec1117eaf",
+        "name": "Interview Prep Agent",
+        "type": "Independent",
+        "status": "created",
+        "schema_saved": true
+      },
+      "report_generation_agent": {
+        "agent_id": "6970c82a1d92f5e2dd22a552",
+        "name": "Report Generation Agent",
+        "type": "Independent",
+        "status": "created",
+        "schema_saved": true
+      }
+    }
+  },
+  "workflow_summary": {
+    "total_agents": 7,
+    "manager_agents": 1,
+    "sub_agents": 4,
+    "independent_agents": 2,
+    "all_schemas_saved": true
+  },
+  "agent_configuration": {
+    "provider": "OpenAI",
+    "default_model": "gpt-4.1",
+    "manager_config": {
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1
+    },
+    "sub_agent_configs": {
+      "data_extraction": {
+        "model": "gpt-4.1",
+        "temperature": 0.2,
+        "top_p": 1
+      },
+      "reconciliation": {
+        "model": "gpt-4.1",
+        "temperature": 0.2,
+        "top_p": 1
+      },
+      "qoe_analysis": {
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "top_p": 1
+      },
+      "nwc_analysis": {
+        "model": "gpt-4.1",
+        "temperature": 0.3,
+        "top_p": 1
+      }
+    },
+    "independent_configs": {
+      "interview_prep": {
+        "model": "gpt-4.1",
+        "temperature": 0.5,
+        "top_p": 1
+      },
+      "report_generation": {
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "top_p": 1
+      }
+    }
+  },
+  "created_at": "2026-01-21T00:00:00Z",
+  "platform": "Private Equity FDD Platform"
+}

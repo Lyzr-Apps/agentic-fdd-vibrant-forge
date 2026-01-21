@@ -1,0 +1,63 @@
+{
+  "agent_name": "QoE Analysis Agent",
+  "agent_id": "6970c7921d92f5e2dd22a527",
+  "test_message": "Analyze operating expenses: CEO salary $250k, one-time legal settlement $50k, personal auto lease $14.4k, R&D costs $120k. Calculate normalized EBITDA adjustments.",
+  "expected_purpose": "assistant",
+  "timestamp": "2026-01-21T12:40:24.708134",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "reported_ebitda": 0.0,
+      "total_addbacks": 64,
+      "normalized_ebitda": 64,
+      "addback_categories": [
+        {
+          "category": "One-time legal settlement",
+          "description": "Non-recurring legal expense for settlement unrelated to ongoing business operations.",
+          "amount": 50000.0,
+          "rationale": "This legal expense is considered non-recurring and unrelated to ongoing operations. Excluding it provides a clearer view of sustainable EBITDA.",
+          "defensibility": "High",
+          "supporting_evidence": "Settlement agreement and payment documentation."
+        },
+        {
+          "category": "Personal Expenses",
+          "description": "Personal auto lease paid by company for CEO.",
+          "amount": 14400.0,
+          "rationale": "The auto lease is a personal expense and not required for business operations. Removing it aligns EBITDA with core business profitability.",
+          "defensibility": "High",
+          "supporting_evidence": "Vehicle lease agreement and expense policy comparison."
+        }
+      ],
+      "ebitda_bridge": {
+        "reported_ebitda": 0.0,
+        "personal_expenses": 14400.0,
+        "one_time_fees": 50000.0,
+        "litigation_costs": 0.0,
+        "owner_compensation_adj": 0.0,
+        "other_adjustments": 0.0,
+        "normalized_ebitda": 64400.0
+      },
+      "quality_assessment": {
+        "revenue_quality_score": 8.0,
+        "expense_quality_score": 8.5,
+        "overall_earnings_quality": "High",
+        "red_flags": [
+          "Potential overcompensation: CEO salary requires market benchmarking for owner compensation adjustment.",
+          "R&D cost add-back not justified unless proven non-recurring or not core to business."
+        ]
+      },
+      "recommendations": [
+        "Benchmark CEO salary against market to determine if an owner compensation adjustment is warranted.",
+        "Provide clear documentation supporting non-recurring nature of the legal settlement.",
+        "Review other expense categories for further personal or non-recurring items."
+      ]
+    },
+    "metadata": {
+      "agent_name": "QoE Analysis Agent",
+      "timestamp": "2024-06-17T16:01:39Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"reported_ebitda\": 0.00,\n    \"total_addbacks\": 64,  \"normalized_ebitda\": 64,\n    \"addback_categories\": [\n      {\n        \"category\": \"One-time legal settlement\",\n        \"description\": \"Non-recurring legal expense for settlement unrelated to ongoing business operations.\",\n        \"amount\": 50000.00,\n        \"rationale\": \"This legal expense is considered non-recurring and unrelated to ongoing operations. Excluding it provides a clearer view of sustainable EBITDA.\",\n        \"defensibility\": \"High\",\n        \"supporting_evidence\": \"Settlement agreement and payment documentation.\"\n      },\n      {\n        \"category\": \"Personal Expenses\",\n        \"description\": \"Personal auto lease paid by company for CEO.\",\n        \"amount\": 14400.00,\n        \"rationale\": \"The auto lease is a personal expense and not required for business operations. Removing it aligns EBITDA with core business profitability.\",\n        \"defensibility\": \"High\",\n        \"supporting_evidence\": \"Vehicle lease agreement and expense policy comparison.\"\n      }\n    ],\n    \"ebitda_bridge\": {\n      \"reported_ebitda\": 0.00,\n      \"personal_expenses\": 14400.00,\n      \"one_time_fees\": 50000.00,\n      \"litigation_costs\": 0.00,\n      \"owner_compensation_adj\": 0.00,\n      \"other_adjustments\": 0.00,\n      \"normalized_ebitda\": 64400.00\n    },\n    \"quality_assessment\": {\n      \"revenue_quality_score\": 8.0,\n      \"expense_quality_score\": 8.5,\n      \"overall_earnings_quality\": \"High\",\n      \"red_flags\": [\n        \"Potential overcompensation: CEO salary requires market benchmarking for owner compensation adjustment.\",\n        \"R&D cost add-back not justified unless proven non-recurring or not core to business.\"\n      ]\n    },\n    \"recommendations\": [\n      \"Benchmark CEO salary against market to determine if an owner compensation adjustment is warranted.\",\n      \"Provide clear documentation supporting non-recurring nature of the legal settlement.\",\n      \"Review other expense categories for further personal or non-recurring items.\"\n    ]\n  },\n  \"metadata\": {\n    \"agent_name\": \"QoE Analysis Agent\",\n    \"timestamp\": \"2024-06-17T16:01:39Z\"\n  }\n}"
+}

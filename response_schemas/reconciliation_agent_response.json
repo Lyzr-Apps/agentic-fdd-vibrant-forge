@@ -1,0 +1,116 @@
+{
+  "agent_name": "Reconciliation Agent",
+  "agent_id": "6970c777d6d0dcaec1117e73",
+  "agent_purpose": "analyzer",
+  "description": "Compares Trial Balances against audited statements, identifies discrepancies with severity ratings",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "reconciliation_status": "string",
+      "total_accounts_compared": "number",
+      "discrepancies_found": "number",
+      "discrepancies": [
+        {
+          "account_code": "string",
+          "account_name": "string",
+          "trial_balance": "number",
+          "audited_statement": "number",
+          "variance": "number",
+          "variance_percentage": "number",
+          "severity": "string",
+          "explanation": "string"
+        }
+      ],
+      "summary": {
+        "critical_issues": "number",
+        "high_issues": "number",
+        "medium_issues": "number",
+        "low_issues": "number",
+        "total_variance_amount": "number"
+      },
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "reconciliation_status": "partial",
+      "total_accounts_compared": 1,
+      "discrepancies_found": 1,
+      "discrepancies": [
+        {
+          "account_code": "TOTAL_ASSETS",
+          "account_name": "Total Assets",
+          "trial_balance": 5200000.0,
+          "audited_statement": 5400000.0,
+          "variance": 200000.0,
+          "variance_percentage": 3.85,
+          "severity": "High",
+          "explanation": "Total assets on the Trial Balance are $200,000 (3.85%) lower than the audited financial statement. This is a material variance in absolute terms, though not exceeding 5%, indicating potential adjustments or missing asset entries that require investigation."
+        }
+      ],
+      "summary": {
+        "critical_issues": 0,
+        "high_issues": 1,
+        "medium_issues": 0,
+        "low_issues": 0,
+        "total_variance_amount": 200000.0
+      },
+      "recommendations": [
+        "Investigate asset accounts contributing to the $200,000 discrepancy between Trial Balance and the audited financial statement.",
+        "Review reconciliations for fixed assets, receivables, and other major asset categories for possible omissions or audit adjustments.",
+        "Request a breakdown of adjusting entries made during the audit to explain the variance."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Reconciliation Agent",
+      "timestamp": "2024-06-16T06:44:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-21T12:40:16.726217",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "reconciliation_status": "partial",
+      "total_accounts_compared": 1,
+      "discrepancies_found": 1,
+      "discrepancies": [
+        {
+          "account_code": "TOTAL_ASSETS",
+          "account_name": "Total Assets",
+          "trial_balance": 5200000.0,
+          "audited_statement": 5400000.0,
+          "variance": 200000.0,
+          "variance_percentage": 3.85,
+          "severity": "High",
+          "explanation": "Total assets on the Trial Balance are $200,000 (3.85%) lower than the audited financial statement. This is a material variance in absolute terms, though not exceeding 5%, indicating potential adjustments or missing asset entries that require investigation."
+        }
+      ],
+      "summary": {
+        "critical_issues": 0,
+        "high_issues": 1,
+        "medium_issues": 0,
+        "low_issues": 0,
+        "total_variance_amount": 200000.0
+      },
+      "recommendations": [
+        "Investigate asset accounts contributing to the $200,000 discrepancy between Trial Balance and the audited financial statement.",
+        "Review reconciliations for fixed assets, receivables, and other major asset categories for possible omissions or audit adjustments.",
+        "Request a breakdown of adjusting entries made during the audit to explain the variance."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Reconciliation Agent",
+      "timestamp": "2024-06-16T06:44:00Z"
+    }
+  },
+  "test_passed": true
+}
