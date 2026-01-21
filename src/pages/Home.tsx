@@ -360,9 +360,23 @@ export default function Home() {
     setLoading(true)
 
     try {
-      const message = 'Generate management interview questions based on these anomalies: 45% AR spike in Q4, payables stretched from 30 to 60 days, inventory turnover decline.'
+      // Build message from FDD findings
+      const anomalies = fddResponse
+        ? `Based on FDD analysis for ${engagementData.companyName}:
 
-      const result = await callAIAgent(message, AGENT_IDS.INTERVIEW_PREP)
+        Key Findings: ${fddResponse.executive_summary.key_findings.join('; ')}
+
+        Deal Breakers: ${fddResponse.executive_summary.deal_breakers.join('; ')}
+
+        Cross-Functional Risks: ${fddResponse.aggregated_findings.cross_functional_risks.map(r => `${r.risk_type} (${r.severity}): ${r.description}`).join('; ')}
+
+        Critical Issues: ${fddResponse.aggregated_findings.critical_issues}
+        High Priority Issues: ${fddResponse.aggregated_findings.high_priority_issues}
+
+        Generate targeted management interview questions based on these findings.`
+        : 'Generate management interview questions based on these anomalies: 45% AR spike in Q4, payables stretched from 30 to 60 days, inventory turnover decline.'
+
+      const result = await callAIAgent(anomalies, AGENT_IDS.INTERVIEW_PREP)
 
       if (result.success && result.response.status === 'success') {
         setInterviewResponse(result.response.result as InterviewPrepResult)
@@ -379,9 +393,33 @@ export default function Home() {
     setLoading(true)
 
     try {
-      const message = `Generate FDD report for ${engagementData.companyName}. Reported EBITDA $5.0M, adjustments: CEO salary add-back $200k, legal settlement $50k, personal expenses $14k. Red flags: AR aging, payables stretching.`
+      // Build comprehensive report message from all findings
+      const reportInput = fddResponse
+        ? `Generate comprehensive FDD report for ${engagementData.companyName}.
 
-      const result = await callAIAgent(message, AGENT_IDS.REPORT_GENERATION)
+        EXECUTIVE SUMMARY:
+        - Overall Risk Rating: ${fddResponse.executive_summary.overall_risk_rating}
+        - Key Findings: ${fddResponse.executive_summary.key_findings.join('; ')}
+        - Deal Breakers: ${fddResponse.executive_summary.deal_breakers.join('; ')}
+        - Negotiation Points: ${fddResponse.executive_summary.negotiation_points.join('; ')}
+
+        AGGREGATED FINDINGS:
+        - Total Red Flags: ${fddResponse.aggregated_findings.total_red_flags}
+        - Critical Issues: ${fddResponse.aggregated_findings.critical_issues}
+        - High Priority Issues: ${fddResponse.aggregated_findings.high_priority_issues}
+
+        CROSS-FUNCTIONAL RISKS:
+        ${fddResponse.aggregated_findings.cross_functional_risks.map(r =>
+          `- ${r.risk_type} (${r.severity}): ${r.description}. Affected: ${r.affected_areas.join(', ')}. Action: ${r.recommended_action}`
+        ).join('\n        ')}
+
+        NEXT STEPS:
+        ${fddResponse.next_steps.join('; ')}
+
+        Please generate a complete FDD report with EBITDA bridge analysis, QoE adjustments, NWC analysis, red flags summary, and SPA negotiation points.`
+        : `Generate FDD report for ${engagementData.companyName}. Reported EBITDA $5.0M, adjustments: CEO salary add-back $200k, legal settlement $50k, personal expenses $14k. Red flags: AR aging, payables stretching.`
+
+      const result = await callAIAgent(reportInput, AGENT_IDS.REPORT_GENERATION)
 
       if (result.success && result.response.status === 'success') {
         setReportResponse(result.response.result as ReportResult)
@@ -807,8 +845,8 @@ export default function Home() {
                 <CardTitle className="text-sm font-medium text-gray-600">Risk Rating</CardTitle>
               </CardHeader>
               <CardContent>
-                <Badge className={getSeverityColor(fddResponse.executive_summary.overall_risk_rating)}>
-                  {fddResponse.executive_summary.overall_risk_rating.toUpperCase()}
+                <Badge className={getSeverityColor(fddResponse.executive_summary.overall_risk_rating || 'medium')}>
+                  {(fddResponse.executive_summary.overall_risk_rating || 'MEDIUM').toUpperCase()}
                 </Badge>
               </CardContent>
             </Card>
